@@ -5,10 +5,10 @@ from qwen_omni_utils import process_mm_info
 
 MODEL_PATH = "Qwen/Qwen3-Omni-30B-A3B-Instruct"
 
-# 1. Load Model (Same as your code)
+# 1. Load Model
 model = Qwen3OmniMoeForConditionalGeneration.from_pretrained(
     MODEL_PATH,
-    dtype="auto",
+    torch_dtype=torch.bfloat16,
     device_map="auto",
     attn_implementation="flash_attention_2",
 )
