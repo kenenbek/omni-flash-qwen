@@ -5,7 +5,7 @@ from qwen_omni_utils import process_mm_info
 
 model = Qwen2_5OmniForConditionalGeneration.from_pretrained(
     "unsloth/Qwen2.5-Omni-3B-GGUF",
-    dtype="auto",
+    dtype="bf16",
     device_map="auto",
     attn_implementation="flash_attention_2",
 )
