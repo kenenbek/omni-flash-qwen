@@ -1,14 +1,16 @@
 import soundfile as sf
 
+import torch
 from transformers import Qwen2_5OmniForConditionalGeneration, Qwen2_5OmniProcessor
 from qwen_omni_utils import process_mm_info
+
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 model = Qwen2_5OmniForConditionalGeneration.from_pretrained(
     "unsloth/Qwen2.5-Omni-3B",
     dtype="auto",
-    device_map="auto",
     attn_implementation="flash_attention_2",
-)
+).to(device)
 
 processor = Qwen2_5OmniProcessor.from_pretrained("unsloth/Qwen2.5-Omni-3B")
 
