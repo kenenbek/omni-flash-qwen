@@ -4,13 +4,13 @@ from transformers import Qwen2_5OmniForConditionalGeneration, Qwen2_5OmniProcess
 from qwen_omni_utils import process_mm_info
 
 model = Qwen2_5OmniForConditionalGeneration.from_pretrained(
-    "unsloth/Qwen2.5-Omni-3B-GGUF",
+    "unsloth/Qwen2.5-Omni-3B",
     dtype="bf16",
     device_map="auto",
     attn_implementation="flash_attention_2",
 )
 
-processor = Qwen2_5OmniProcessor.from_pretrained("unsloth/Qwen2.5-Omni-3B-GGUF")
+processor = Qwen2_5OmniProcessor.from_pretrained("unsloth/Qwen2.5-Omni-3B")
 
 conversation = [
     {
@@ -38,3 +38,9 @@ text_ids, audio = model.generate(**inputs)
 
 text = processor.batch_decode(text_ids, skip_special_tokens=True, clean_up_tokenization_spaces=False)
 print(text)
+
+sf.write(
+    "output.wav",
+    audio.reshape(-1).detach().cpu().numpy(),
+    samplerate=24000,
+)
