@@ -23,7 +23,7 @@ conversation = [
         "role": "user",
         "content": [
             {"type": "text",
-             "text": "Сен Кыргызстан жөнүндө эмне билесиң?"},
+             "text": "explain me backpropagation in simple terms and read the explanation aloud"},
         ],
     },
 ]
