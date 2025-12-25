@@ -13,7 +13,7 @@ from typing import Optional
 # Option 1: Using vllm-omni with offline inference
 def tts_with_vllm_omni_offline(
     text: str,
-    model_path: str = "Qwen/Qwen2.5-Omni-7B",
+    model_path: str = "Qwen/Qwen2.5-Omni-3B",
     output_file: str = "output.wav",
     speaker: str = "Ethan"
 ):
@@ -61,7 +61,7 @@ def tts_with_vllm_omni_offline(
 # Option 2: Using the Talker model directly from transformers/vllm-omni
 def tts_with_talker_model(
     text: str,
-    model_path: str = "Qwen/Qwen2.5-Omni-7B",
+    model_path: str = "Qwen/Qwen2.5-Omni-3B",
     output_file: str = "output.wav",
     speaker: str = "Ethan"
 ):
@@ -140,7 +140,7 @@ def tts_with_talker_model(
 
 
 # Option 3: FastAPI Server for TTS using vllm-omni
-def create_tts_server(model_path: str = "Qwen/Qwen2.5-Omni-7B"):
+def create_tts_server(model_path: str = "Qwen/Qwen2.5-Omni-3B"):
     """
     Create a FastAPI server for TTS using vllm-omni.
     """
@@ -229,7 +229,7 @@ if __name__ == "__main__":
                         help="Run mode: 'tts' for single generation, 'server' for API")
     parser.add_argument("--text", type=str, default="Hello, this is a text to speech demo.",
                         help="Text to convert to speech")
-    parser.add_argument("--model", type=str, default="Qwen/Qwen2.5-Omni-7B",
+    parser.add_argument("--model", type=str, default="Qwen/Qwen2.5-Omni-3B",
                         help="Model path or name")
     parser.add_argument("--output", type=str, default="output.wav",
                         help="Output WAV file path")
