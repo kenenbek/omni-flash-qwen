@@ -70,13 +70,8 @@ def tts_with_talker_model(
 
     The Talker model is the audio synthesis component of Qwen2.5-Omni.
     """
-    try:
-        # Try importing from vllm-omni first
-        from vllm_omni.model import Qwen2_5OmniTalkerForConditionalGeneration
-    except ImportError:
-        # Fallback to transformers
-        from transformers import Qwen2_5OmniTalkerForConditionalGeneration
 
+    from vllm_omni.model import Qwen2_5OmniTalkerForConditionalGeneration
     from transformers import Qwen2_5OmniProcessor
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
